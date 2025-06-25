@@ -1,0 +1,147 @@
+
+MySQL Full Beginner Tutorial
+============================
+
+1. Introduction to MySQL
+-------------------------
+MySQL is a popular open-source relational database management system (RDBMS) that uses SQL (Structured Query Language) to manage data.
+
+2. Installing MySQL
+--------------------
+- Windows: Use the MySQL Installer or XAMPP
+- macOS: Use Homebrew or XAMPP
+- Linux: Use apt or yum package managers
+Example:
+sudo apt-get install mysql-server
+
+3. Starting MySQL
+------------------
+On command line:
+mysql -u root -p
+
+If no password is set, just press Enter.
+
+4. Creating a Database
+-----------------------
+CREATE DATABASE SchoolDB;
+
+List all databases:
+SHOW DATABASES;
+
+Select a database to use:
+USE SchoolDB;
+
+5. Creating Tables
+-------------------
+CREATE TABLE Students (
+  ID INT PRIMARY KEY,
+  Name VARCHAR(100),
+  Age INT
+);
+
+6. Inserting Data
+------------------
+INSERT INTO Students (ID, Name, Age)
+VALUES (1, 'Alice', 20),
+       (2, 'Bob', 22);
+
+7. Retrieving Data (SELECT)
+----------------------------
+SELECT * FROM Students;
+SELECT Name FROM Students WHERE Age > 20;
+
+8. Updating Data
+-----------------
+UPDATE Students SET Age = 23 WHERE ID = 2;
+
+9. Deleting Data
+-----------------
+DELETE FROM Students WHERE ID = 1;
+
+10. Altering Tables
+--------------------
+Add a new column:
+ALTER TABLE Students ADD COLUMN Grade CHAR(1);
+
+Rename a column (MySQL 8+):
+ALTER TABLE Students RENAME COLUMN Grade TO Performance;
+
+Delete a column:
+ALTER TABLE Students DROP COLUMN Performance;
+
+11. Dropping Tables and Databases
+----------------------------------
+DROP TABLE Students;
+DROP DATABASE SchoolDB;
+
+12. Using JOINS
+----------------
+-- Assume another table: Marks(ID INT, Score INT)
+
+INNER JOIN:
+SELECT Students.Name, Marks.Score
+FROM Students
+INNER JOIN Marks ON Students.ID = Marks.ID;
+
+LEFT JOIN:
+SELECT Students.Name, Marks.Score
+FROM Students
+LEFT JOIN Marks ON Students.ID = Marks.ID;
+
+13. SQL Clauses
+----------------
+WHERE: Filter results
+ORDER BY: Sort results
+GROUP BY: Group rows by a column
+HAVING: Filter groups
+
+Example:
+SELECT Age, COUNT(*) FROM Students
+GROUP BY Age
+HAVING COUNT(*) > 1;
+
+14. Aggregate Functions
+------------------------
+COUNT(), SUM(), AVG(), MIN(), MAX()
+
+Example:
+SELECT AVG(Age) FROM Students;
+
+15. Transactions (TCL)
+-----------------------
+START TRANSACTION;
+UPDATE Students SET Age = Age + 1;
+COMMIT; -- or ROLLBACK;
+
+16. User Management (DCL)
+--------------------------
+Create user:
+CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
+
+Grant permissions:
+GRANT ALL PRIVILEGES ON SchoolDB.* TO 'newuser'@'localhost';
+
+Revoke permissions:
+REVOKE ALL PRIVILEGES ON SchoolDB.* FROM 'newuser'@'localhost';
+
+17. Export and Import
+----------------------
+Export:
+mysqldump -u root -p SchoolDB > backup.sql
+
+Import:
+mysql -u root -p SchoolDB < backup.sql
+
+18. Useful Commands Summary
+----------------------------
+SHOW TABLES;
+DESCRIBE Students;
+SELECT VERSION();
+EXIT;
+
+19. Tips
+---------
+- Always back up data before making major changes.
+- Use `IF NOT EXISTS` and `IF EXISTS` to avoid errors when creating/dropping.
+
+Happy Learning MySQL!

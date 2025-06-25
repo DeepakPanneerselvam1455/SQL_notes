@@ -1,0 +1,43 @@
+Create a database named LibraryDB.
+
+Create the following tables:
+- Books: BookID, Title, Author, AvailableCopies
+- Members: MemberID, Name, Email
+- Borrowings: BorrowID, BookID, MemberID, BorrowDate, ReturnDate
+
+Add a new column PublishedYear to the Books table.
+
+Delete the ReturnDate column from the Borrowings table.
+alter table books drop column return date;
+
+Insert at least 3 books into the Books table. 
+
+Insert at least 3 members into the Members table.
+
+Insert at least 3 borrow records into the Borrowings table.
+
+Update the AvailableCopies of one book.
+
+Delete a member who hasn’t borrowed any books.
+
+Display all books that are currently available (AvailableCopies > 0).
+
+List all members along with the books they’ve borrowed.
+
+Show how many times each book has been borrowed.
+
+Find members who borrowed books after a specific date.
+
+Start a transaction.
+
+Borrow a book by reducing AvailableCopies by 1.
+
+Use ROLLBACK to undo the last operation.
+
+Repeat the borrowing and then use COMMIT to save the change.
+
+Create a new user named librarian with a password.
+
+Grant SELECT, INSERT, and UPDATE permissions on Books and Borrowings tables to the librarian user.
+
+Revoke UPDATE permission from the librarian user.

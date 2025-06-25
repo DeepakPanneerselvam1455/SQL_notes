@@ -1,0 +1,35 @@
+-- ALTER TABLE Examples
+
+-- 1. Add a new column
+ALTER TABLE employees
+ADD age INT;
+
+-- 2. Drop a column
+ALTER TABLE employees
+DROP COLUMN age;
+
+-- 3. Rename a column
+-- MySQL:
+ALTER TABLE employees
+CHANGE COLUMN old_name new_name VARCHAR(50);
+
+-- PostgreSQL:
+ALTER TABLE employees
+RENAME COLUMN old_name TO new_name;
+
+-- 4. Modify column data type
+-- MySQL:
+ALTER TABLE employees
+MODIFY COLUMN age VARCHAR(10);
+
+-- PostgreSQL:
+ALTER TABLE employees
+ALTER COLUMN age TYPE VARCHAR(10);
+
+-- 5. Add a constraint
+ALTER TABLE employees
+ADD CONSTRAINT age_check CHECK (age >= 18);
+
+-- 6. Drop a constraint
+ALTER TABLE employees
+DROP CONSTRAINT age_check;
